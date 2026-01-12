@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nguyễn Đức Dũng | IT Developer</title>
+    <meta name="description"
+        content="Portfolio cá nhân của Nguyễn Đức Dũng - IT Developer (.NET, Backend, IoT, Microservices)" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons (External library) - Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #000;
+            --panel: rgba(255, 255, 255, .06);
+            --panel2: rgba(255, 255, 255, .10);
+            --text: rgba(255, 255, 255, .90);
+            --muted: rgba(255, 255, 255, .62);
+            --line: rgba(255, 255, 255, .12);
+
+            --brand: #7c3aed;
+            --brand2: #06b6d4;
+            --good: #22c55e;
+
+            --shadow: 0 18px 60px rgba(0, 0, 0, .65);
+            --radius: 18px;
+            --radius2: 26px;
+
+            --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --font: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+            --container: 1100px;
+            --navH: 72px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font);
+            background: var(--bg);
+            /* nền đen thuần */
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .container {
+            width: min(var(--container), calc(100% - 40px));
+            margin: 0 auto
+        }
+
+        /* NAV (fixed) */
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: var(--navH);
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, .72);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        main {
+            padding-top: calc(var(--navH) + 18px);
+        }
+
+        /* chừa chỗ cho nav fixed */
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 230px;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--brand), var(--brand2));
+            box-shadow: 0 14px 40px rgba(124, 58, 237, .25);
+            display: grid;
+            place-items: center;
+            color: white;
+            font-weight: 800;
+            letter-spacing: .5px;
+        }
+
+        .brand .name {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.05
+        }
+
+        .brand .name strong {
+            font-size: 14px
+        }
+
+        .brand .name span {
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        .links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .links a {
+            padding: 8px 10px;
+            border-radius: 12px;
+            color: var(--muted);
+            border: 1px solid transparent;
+            transition: .2s ease;
+            font-size: 13px;
+        }
+
+        .links a:hover {
+            color: var(--text);
+            background: var(--panel);
+            border-color: var(--line);
+        }
+
+        .links a.active {
+            color: var(--text);
+            background: linear-gradient(135deg, rgba(124, 58, 237, .22), rgba(6, 182, 212, .16));
+            border-color: rgba(124, 58, 237, .35);
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: flex-end;
+            min-width: 230px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: var(--panel);
+            color: var(--text);
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: .2s ease;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            background: var(--panel2)
+        }
+
+        .btn.primary {
+            border-color: rgba(6, 182, 212, .35);
+            background: linear-gradient(135deg, rgba(124, 58, 237, .35), rgba(6, 182, 212, .25));
+        }
+
+        .btn .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: var(--good);
+            box-shadow: 0 0 0 5px rgba(34, 197, 94, .14);
+        }
+
+        /* Layout */
+        .hero {
+            padding: 28px 0 10px;
+            display: grid;
+            grid-template-columns: 1.25fr .75fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr
+            }
+
+            .brand,
+            .actions {
+                min-width: unset
+            }
+
+            .links {
+                display: none
+            }
+
+            /* mobile: ẩn nav links cho gọn (bạn muốn menu mobile thì mình làm thêm) */
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: var(--radius2);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-main {
+            padding: 24px 20px;
+            min-height: 250px
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--line);
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .04);
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .badge strong {
+            color: var(--text);
+            font-weight: 700;
+            font-family: var(--font)
+        }
+
+        h1 {
+            margin: 14px 0 10px;
+            font-size: clamp(28px, 4vw, 44px);
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+        }
+
+        .sub {
+            margin: 0;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+            max-width: 62ch;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .hero-side {
+            padding: 18px
+        }
+
+        .profile {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 14px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid var(--line);
+        }
+
+        .avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, .9), rgba(6, 182, 212, .75));
+            display: grid;
+            place-items: center;
+            color: white;
+            font-weight: 800;
+            letter-spacing: .5px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, .35);
+        }
+
+        .profile .meta {
+            line-height: 1.2
+        }
+
+        .profile .meta strong {
+            display: block
+        }
+
+        .profile .meta span {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .info {
+            margin-top: 12px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px 12px;
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .04);
+        }
+
+        .label {
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        .value {
+            font-size: 13px;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-family: var(--mono);
+        }
+
+        .mini-actions {
+            display: flex;
+            gap: 8px
+        }
+
+        .iconbtn {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .05);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition: .2s ease;
+            color: var(--text);
+            flex: 0 0 auto;
+        }
+
+        .iconbtn:hover {
+            transform: translateY(-1px);
+            background: var(--panel2)
+        }
+
+        .iconbtn i {
+            font-size: 15px
+        }
+
+        section {
+            padding: 22px 0
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px
+        }
+
+        .section-head h2 {
+            margin: 0;
+            font-size: 18px
+        }
+
+        .section-head p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 14px;
+        }
+
+        .col-6 {
+            grid-column: span 6
+        }
+
+        .col-7 {
+            grid-column: span 7
+        }
+
+        .col-5 {
+            grid-column: span 5
+        }
+
+        .col-12 {
+            grid-column: span 12
+        }
+
+        @media (max-width: 900px) {
+
+            .col-6,
+            .col-7,
+            .col-5 {
+                grid-column: span 12
+            }
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: var(--radius2);
+            padding: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .pillrow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px
+        }
+
+        .pill {
+            font-size: 12px;
+            padding: 7px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .04);
+            color: var(--muted);
+        }
+
+        .pill strong {
+            color: var(--text);
+            font-weight: 700
+        }
+
+        .timeline {
+            display: grid;
+            gap: 12px
+        }
+
+        .tl-item {
+            padding: 14px;
+            border-radius: var(--radius2);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tl-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 6px
+        }
+
+        .tl-top strong {
+            font-size: 14px
+        }
+
+        .tl-top span {
+            font-size: 12px;
+            color: var(--muted);
+            font-family: var(--mono)
+        }
+
+        .tl-sub {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 10px
+        }
+
+        .tl-desc {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text)
+        }
+
+        .proj {
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+
+        .proj h3 {
+            margin: 0;
+            font-size: 15px
+        }
+
+        .proj .meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            color: var(--muted);
+            font-size: 12px
+        }
+
+        .proj p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 13px
+        }
+
+        .tag {
+            font-size: 12px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: rgba(124, 58, 237, .12);
+            color: var(--text);
+        }
+
+        .tag.cyan {
+            background: rgba(6, 182, 212, .14)
+        }
+
+        .tag.green {
+            background: rgba(34, 197, 94, .12)
+        }
+
+        .tag.orange {
+            background: rgba(245, 158, 11, .14)
+        }
+
+        footer {
+            padding: 20px 0 40px
+        }
+
+        .foot {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            color: var(--muted);
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            padding-top: 16px;
+        }
+
+        .foot a {
+            color: var(--text);
+            border-bottom: 1px dashed var(--line)
+        }
+
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 18px;
+            transform: translateX(-50%) translateY(18px);
+            opacity: 0;
+            pointer-events: none;
+            background: rgba(0, 0, 0, .70);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, .14);
+            padding: 10px 12px;
+            border-radius: 14px;
+            backdrop-filter: blur(14px);
+            font-size: 13px;
+            transition: .25s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0)
+        }
+
+        .sep {
+            height: 1px;
+            background: rgba(255, 255, 255, .08);
+            margin: 14px 0
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: .55s ease
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .brand-img {
+            width: 38px;
+            height: 38px;
+            border-radius: 14px;
+            /* bo góc giống logo */
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, .14);
+            box-shadow: 0 14px 40px rgba(124, 58, 237, .18);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- FIXED NAV -->
+    <header class="topbar">
+        <div class="container">
+            <div class="nav">
+                <a class="brand" href="#top">
+                    <img class="brand-img" src="./asset/img/logo.jpg" alt="Nguyễn Đức Dũng" />
+                    <div class="name">
+                        <strong>Nguyễn Đức Dũng</strong>
+                        <span style="margin-top: 4px;">IT Developer • .NET / Backend / IoT</span>
+                    </div>
+                </a>
+
+
+                <nav class="links" id="navLinks">
+                    <a href="#about">Giới thiệu</a>
+                    <a href="#experience">Kinh nghiệm</a>
+                    <a href="#projects">Dự án</a>
+                    <a href="#skills">Kỹ năng</a>
+                    <a href="#contact">Liên hệ</a>
+                </nav>
+
+                <div class="actions">
+                    <a class="btn primary" href="#contact">
+                        <span class="dot" aria-hidden="true"></span>
+                        <span>Open to work</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="top" class="container">
+        <!-- HERO -->
+        <div class="hero">
+            <div class="card hero-main reveal">
+                <div class="badge"><strong>IT DEVELOPER</strong></div>
+
+                <h1>
+                    Xây hệ thống
+                    <span
+                        style="background:linear-gradient(135deg,var(--brand),var(--brand2)); -webkit-background-clip:text; background-clip:text; color:transparent;">Backend</span>
+                    vững chắc<br />
+                    & giải pháp
+                    <span
+                        style="background:linear-gradient(135deg,var(--brand2),var(--brand)); -webkit-background-clip:text; background-clip:text; color:transparent;">IoT</span>
+                    thực chiến.
+                </h1>
+
+                <p class="sub">
+                    Sinh viên CNTT với nền tảng lập trình, mạng và quản trị hệ thống.
+                    Thực chiến với <b style="color:var(--text)">C#/.NET</b>, <b style="color:var(--text)">SQL</b>,
+                    <b style="color:var(--text)">RabbitMQ</b>, <b style="color:var(--text)">Redis</b>,
+                    microservices và thiết bị IoT. Luôn sẵn sàng học công nghệ mới và giải bài toán khó.
+                </p>
+
+                <div class="hero-cta">
+                    <button class="btn" onclick="scrollToId('projects')">
+                        <i class="fa-solid fa-rocket"></i> <span>Xem dự án</span>
+                    </button>
+                    <button class="btn" onclick="copyText('duccdung999@gmail.com','Đã copy email!')">
+                        <i class="fa-regular fa-copy"></i> <span>Copy email</span>
+                    </button>
+                    <a class="btn" href="https://github.com/DuccDung" target="_blank" rel="noreferrer">
+                        <i class="fa-brands fa-github"></i> <span>GitHub</span>
+                    </a>
+                    <button class="btn" id="cvBtn">
+                        <i class="fa-solid fa-file-arrow-down"></i> <span>Tải CV</span>
+                    </button>
+                </div>
+
+                <div class="sep"></div>
+
+                <div class="pillrow">
+                    <span class="pill"><strong>.NET 8</strong> • ASP.NET Core</span>
+                    <span class="pill"><strong>EF Core</strong> • SQL Server</span>
+                    <span class="pill"><strong>Redis</strong> • RabbitMQ</span>
+                    <span class="pill"><strong>Docker</strong> • GitHub Actions</span>
+                    <span class="pill"><strong>MQTT</strong> • WebSocket</span>
+                </div>
+            </div>
+
+            <aside class="card hero-side reveal">
+                  <a class="brand" href="#top">
+                    <img class="brand-img" src="./asset/img/logo.jpg" alt="Nguyễn Đức Dũng" />
+                    <div class="name">
+                        <strong>Nguyễn Đức Dũng</strong>
+                    </div>
+                </a>
+
+                <div class="info">
+                    <div class="info-item">
+                        <div class="left">
+                            <div class="label">Số điện thoại</div>
+                            <div class="value" title="0961848526">0961848526</div>
+                        </div>
+                        <div class="mini-actions">
+                            <button class="iconbtn" title="Copy"
+                                onclick="copyText('0961848526','Đã copy số điện thoại!')">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                            <a class="iconbtn" title="Gọi điện" href="tel:0961848526">
+                                <i class="fa-solid fa-phone"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="left">
+                            <div class="label">Email</div>
+                            <div class="value" title="duccdung999@gmail.com">duccdung999@gmail.com</div>
+                        </div>
+                        <div class="mini-actions">
+                            <button class="iconbtn" title="Copy"
+                                onclick="copyText('duccdung999@gmail.com','Đã copy email!')">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                            <a class="iconbtn" title="Gửi mail" href="mailto:duccdung999@gmail.com">
+                                <i class="fa-solid fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="left">
+                            <div class="label">Website</div>
+                            <div class="value" title="github.com/DuccDung">github.com/DuccDung</div>
+                        </div>
+                        <div class="mini-actions">
+                            <a class="iconbtn" title="Mở GitHub" href="https://github.com/DuccDung" target="_blank"
+                                rel="noreferrer">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sep"></div>
+                <div class="muted" style="font-size:13px; line-height:1.6">
+                    <b style="color:var(--text)">Fun fact:</b>
+                    Mình thích làm IoT và rất mê debug lỗi khó <i class="fa-solid fa-bolt"></i>
+                </div>
+            </aside>
+        </div>
+
+        <!-- ABOUT -->
+        <section id="about" class="reveal">
+            <div class="section-head">
+                <div>
+                    <h2>SUMMARY</h2>
+                    <p>Tóm tắt nhanh về định hướng & thế mạnh</p>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="panel col-7">
+                    <div style="font-size:14px; line-height:1.7; color:var(--muted)">
+                        <p style="margin:0">
+                            Chuyên ngành CNTT với nền tảng về lập trình, networking và quản trị hệ thống.
+                            Thực chiến với <b style="color:var(--text)">C#/.NET</b>, <b
+                                style="color:var(--text)">Java</b>, <b style="color:var(--text)">SQL</b>,
+                            xây API, realtime, microservices, message queue và hệ thống IoT.
+                            Mục tiêu: backend vững kiến trúc, tối ưu hiệu năng và triển khai ổn định.
+                        </p>
+                    </div>
+                    <div class="pillrow">
+                        <span class="pill"><i class="fa-solid fa-diagram-project"></i> Tư duy hệ thống</span>
+                        <span class="pill"><i class="fa-solid fa-bolt"></i> Realtime</span>
+                        <span class="pill"><i class="fa-solid fa-gear"></i> CI/CD</span>
+                        <span class="pill"><i class="fa-solid fa-wifi"></i> IoT/MQTT</span>
+                    </div>
+                </div>
+
+                <div class="panel col-5">
+                    <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+                        <div>
+                            <div class="label">Ngày sinh</div>
+                            <div style="margin-top:4px; font-weight:700">02/06/2004</div>
+                        </div>
+                        <div>
+                            <div class="label">Địa chỉ</div>
+                            <div style="margin-top:4px; font-weight:700">Cầu Giấy, Hà Nội</div>
+                        </div>
+                    </div>
+                    <div class="sep"></div>
+                    <div style="display:grid; gap:8px; color:var(--muted); font-size:13px">
+                        <div><i class="fa-solid fa-check"></i> Ưu tiên clean architecture, dễ mở rộng</div>
+                        <div><i class="fa-solid fa-check"></i> Tối ưu truy vấn & cache hợp lý</div>
+                        <div><i class="fa-solid fa-check"></i> Deploy Docker + pipeline tự động</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="reveal">
+            <div class="section-head">
+                <div>
+                    <h2>PROFESSIONAL EXPERIENCE</h2>
+                    <p>Freelance/Contract Software Engineer (Outsourcing)</p>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="tl-item">
+                    <div class="tl-top">
+                        <strong>Freelance/Contract Software Engineer — Various SME Clients</strong>
+                        <span>08/2024 → 09/2025</span>
+                    </div>
+                    <div class="tl-sub">
+                        Tech Stack:
+                        <code>.NET 8</code>, <code>C#</code>, <code>ASP.NET Core</code>, <code>EF Core</code>,
+                        <code>SQL Server</code>,
+                        <code>Redis</code>, <code>RabbitMQ (AMQP/MQTT)</code>, <code>Docker Compose</code>,
+                        <code>GitHub Actions</code>
+                    </div>
+                    <div class="tl-desc">
+                        Xây hệ thống cho SME theo hướng tối ưu vận hành: API, data model, realtime + queue, CI/CD,
+                        tích hợp bên thứ ba (Zoom/YouTube, v.v.).
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="reveal">
+            <div class="section-head">
+                <div>
+                    <h2>PROJECTS</h2>
+                    <p>Dự án tiêu biểu (Team Leader)</p>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="panel col-6">
+                    <div class="proj">
+                        <div
+                            style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:flex-start">
+                            <h3>1) Order Scanning System</h3>
+                            <span class="tag cyan">08/2024 - 12/2024</span>
+                        </div>
+                        <div class="meta">
+                            <span class="tag green"><i class="fa-solid fa-user-tie"></i> Team Leader</span>
+                            <span>ASP.NET Core • SQL Server • SignalR • REST APIs</span>
+                        </div>
+                        <p>
+                            Hệ thống quét barcode cho nhà hàng, tích hợp thanh toán online & đặt món từ xa.
+                            Tập trung realtime UI và cập nhật đơn hàng nhất quán.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="panel col-6">
+                    <div class="proj">
+                        <div
+                            style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:flex-start">
+                            <h3>2) Smart Home & Vehicle Safety System</h3>
+                            <span class="tag orange">02/2025 - 05/2025</span>
+                        </div>
+                        <div class="meta">
+                            <span class="tag green"><i class="fa-solid fa-user-tie"></i> Team Leader</span>
+                            <span>ASP.NET Core • Arduino • MQTT • WebSocket • Android</span>
+                        </div>
+                        <p>
+                            IoT điều khiển từ xa & cảnh báo an toàn: cảnh báo tai nạn gia đình, trộm xe, theo dõi GPS.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="panel col-12">
+                    <div class="proj">
+                        <div
+                            style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:flex-start">
+                            <h3>3) Facebook Mini</h3>
+                            <span class="tag">08/2025 - Present</span>
+                        </div>
+                        <div class="meta">
+                            <span class="tag green"><i class="fa-solid fa-user-tie"></i> Team Leader</span>
+                            <span>ASP.NET Core • Firebase • SQL Server • MongoDB • WebSocket • Redis • RabbitMQ</span>
+                        </div>
+                        <p>
+                            App giao tiếp (chat, call, chatbot) theo microservices.
+                            Phát triển message/notification services, API gateway, Android app và chatbot.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="reveal">
+            <div class="section-head">
+                <div>
+                    <h2>HARD SKILLS</h2>
+                    <p>Công nghệ đã dùng & tự tin triển khai</p>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="panel col-6">
+                    <strong><i class="fa-solid fa-code"></i> Languages</strong>
+                    <div class="pillrow">
+                        <span class="pill"><strong>Java</strong></span>
+                        <span class="pill"><strong>C/C++</strong></span>
+                        <span class="pill"><strong>C#</strong></span>
+                        <span class="pill"><strong>Python</strong></span>
+                    </div>
+
+                    <div class="sep"></div>
+
+                    <strong><i class="fa-solid fa-layer-group"></i> Frameworks</strong>
+                    <div class="pillrow">
+                        <span class="pill"><strong>ASP.NET</strong></span>
+                        <span class="pill"><strong>FastAPI</strong></span>
+                        <span class="pill"><strong>Oracle APEX</strong></span>
+                    </div>
+                </div>
+
+                <div class="panel col-6">
+                    <strong><i class="fa-solid fa-database"></i> Data / Infra</strong>
+                    <div class="pillrow">
+                        <span class="pill"><strong>PostgreSQL</strong></span>
+                        <span class="pill"><strong>MongoDB</strong></span>
+                        <span class="pill"><strong>TimescaleDB</strong></span>
+                        <span class="pill"><strong>Redis</strong></span>
+                        <span class="pill"><strong>RabbitMQ</strong></span>
+                    </div>
+
+                    <div class="sep"></div>
+
+                    <strong><i class="fa-solid fa-cloud"></i> Tools & Cloud</strong>
+                    <div class="pillrow">
+                        <span class="pill"><strong>Git</strong></span>
+                        <span class="pill"><strong>GitLab CI</strong></span>
+                        <span class="pill"><strong>Docker</strong></span>
+                        <span class="pill"><strong>Podman</strong></span>
+                        <span class="pill"><strong>DigitalOcean</strong></span>
+                        <span class="pill"><strong>Azure</strong></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="reveal">
+            <div class="section-head">
+                <div>
+                    <h2>CONTACT</h2>
+                    <p>Kết nối với mình</p>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="panel col-7">
+                    <div style="display:flex; gap:10px; flex-wrap:wrap">
+                        <a class="btn" href="mailto:duccdung999@gmail.com">
+                            <i class="fa-solid fa-envelope"></i> Email
+                        </a>
+                        <a class="btn" href="tel:0961848526">
+                            <i class="fa-solid fa-phone"></i> Call
+                        </a>
+                        <a class="btn primary" href="https://github.com/DuccDung" target="_blank" rel="noreferrer">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
+                    </div>
+                    <div class="sep"></div>
+                    <div style="color:var(--muted); font-size:13px; line-height:1.7">
+                        Ưu tiên liên hệ qua GitHub hoặc email để trao đổi job/dự án.
+                    </div>
+                </div>
+
+                <div class="panel col-5">
+                    <strong><i class="fa-solid fa-id-card"></i> Quick info</strong>
+                    <div class="sep"></div>
+                    <div style="display:grid; gap:10px; font-size:13px; color:var(--muted)">
+                        <div><i class="fa-solid fa-location-dot"></i> <span style="color:var(--text)">Cầu Giấy, Hà
+                                Nội</span></div>
+                        <div><i class="fa-solid fa-circle-check"></i> <span style="color:var(--text)">Open to
+                                work</span> (Backend/IoT)</div>
+                        <div><i class="fa-solid fa-gears"></i> <span style="color:var(--text)">Stack</span>: .NET 8 •
+                            Redis • RabbitMQ • Docker</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="foot">
+                <div>© <span id="year"></span> Nguyễn Đức Dũng • Built with HTML/CSS/JS</div>
+                <div>
+                    <a href="#top"><i class="fa-solid fa-arrow-up"></i> Lên đầu</a>
+                    &nbsp;•&nbsp;
+                    <a href="https://github.com/DuccDung" target="_blank" rel="noreferrer"><i
+                            class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <div class="toast" id="toast">Copied!</div>
+
+    <script>
+        const $ = (q, el = document) => el.querySelector(q);
+        const $$ = (q, el = document) => [...el.querySelectorAll(q)];
+
+        function toast(msg) {
+            const t = $("#toast");
+            t.textContent = msg;
+            t.classList.add("show");
+            clearTimeout(window.__toastTimer);
+            window.__toastTimer = setTimeout(() => t.classList.remove("show"), 1600);
+        }
+
+        async function copyText(text, msg = "Đã copy!") {
+            try {
+                await navigator.clipboard.writeText(text);
+                toast(msg);
+            } catch (e) {
+                const ta = document.createElement("textarea");
+                ta.value = text;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand("copy");
+                ta.remove();
+                toast(msg);
+            }
+        }
+
+        function scrollToId(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        // Active nav link
+        const navLinks = $$("#navLinks a");
+        const sections = navLinks
+            .map(a => document.querySelector(a.getAttribute("href")))
+            .filter(Boolean);
+
+        const setActive = () => {
+            const y = window.scrollY + 120;
+            let idx = 0;
+            sections.forEach((sec, i) => { if (sec.offsetTop <= y) idx = i; });
+            navLinks.forEach(a => a.classList.remove("active"));
+            navLinks[idx]?.classList.add("active");
+        };
+        window.addEventListener("scroll", setActive, { passive: true });
+        setActive();
+
+        // Reveal
+        const revealEls = $$(".reveal");
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("show"); });
+        }, { threshold: 0.14 });
+        revealEls.forEach(el => io.observe(el));
+
+        // CV placeholder
+        $("#cvBtn").addEventListener("click", () => {
+            toast("Bạn thay nút này bằng link CV PDF (Google Drive / file local).");
+        });
+
+        $("#year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
